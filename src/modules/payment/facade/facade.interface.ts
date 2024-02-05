@@ -1,9 +1,9 @@
-export interface PaymentFacadeInputDto {
+export interface IPaymentFacadeInputDto {
   orderId: string;
   amount: number;
 }
 
-export interface PaymentFacadeOutputDto {
+export interface IPaymentFacadeOutputDto {
   transactionId: string;
   orderId: string;
   amount: number;
@@ -12,6 +12,6 @@ export interface PaymentFacadeOutputDto {
   updatedAt: Date;
 }
 
-export default interface PaymentFacadeInterface {
-  process(input: PaymentFacadeInputDto): Promise<PaymentFacadeOutputDto>;
+export default interface IPaymentFacade {
+  process(input: IPaymentFacadeInputDto): Promise<IPaymentFacadeOutputDto>;
 }

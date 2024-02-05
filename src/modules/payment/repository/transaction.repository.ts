@@ -1,13 +1,12 @@
-import Id from "../../@shared/domain/value-object/id.value-object";
-import Transaction from "../domain/transaction";
-import transaction from "../domain/transaction";
-import PaymentGateway from "../gateway/payment.gateway";
-import TransactionModel from "./transaction.model";
+import Transaction from '../domain/transaction.entity';
+import transaction from '../domain/transaction.entity';
+import IPaymentGateway from '../gateway/payment.gateway';
+import TransactionModel from './transaction.model';
 
-export default class TransactionRepostiory implements PaymentGateway {
+export default class TransactionRepostiory implements IPaymentGateway {
   async save(input: transaction): Promise<transaction> {
     await TransactionModel.create({
-      id: input.id.id,
+      id: input.id.value,
       orderId: input.orderId,
       amount: input.amount,
       status: input.status,
