@@ -1,9 +1,10 @@
-export interface IFindProductInputDto {
-  id: string;
+export interface IFindCatalogProductInputDto {
+  productId: string;
 }
 
-export interface IFindProductOutputDto {
+export interface IFindCatalogProductOutputDto {
   id: string;
+  productId: string;
   name: string;
   description: string;
   salesPrice: number;

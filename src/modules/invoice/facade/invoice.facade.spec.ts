@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
-import { InvoiceModel } from '../repository/invoice.model';
-import { InvoiceItemModel } from '../repository/invoiceItem.model';
+import { InvoiceModel } from '../../../infrastructure/database/models/invoice.model';
+import { InvoiceItemModel } from '../../../infrastructure/database/models/invoiceItem.model';
 import InvoiceFacadeFactory from '../factory/invoice.facade.factory';
 import { IGenerateInvoiceFacadeInputDto } from './invoice.facade.interface';
 import { v4 as uuid } from 'uuid';

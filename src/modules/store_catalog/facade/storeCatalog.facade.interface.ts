@@ -1,9 +1,10 @@
 export interface IFindStoreCatalogFacadeInputDto {
-  id: string;
+  productId: string;
 }
 
 export interface IFindStoreCatalogFacadeOutputDto {
   id: string;
+  productId: string;
   name: string;
   description: string;
   salesPrice: number;
@@ -12,6 +13,7 @@ export interface IFindStoreCatalogFacadeOutputDto {
 export interface IFindAllStoreCatalogFacadeOutputDto {
   products: {
     id: string;
+    productId: string;
     name: string;
     description: string;
     salesPrice: number;
@@ -19,8 +21,8 @@ export interface IFindAllStoreCatalogFacadeOutputDto {
 }
 
 export default interface IStoreCatalogFacade {
-  find(
-    id: IFindStoreCatalogFacadeInputDto,
+  findByProductId(
+    productId: IFindStoreCatalogFacadeInputDto,
   ): Promise<IFindStoreCatalogFacadeOutputDto>;
   findAll(): Promise<IFindAllStoreCatalogFacadeOutputDto>;
 }

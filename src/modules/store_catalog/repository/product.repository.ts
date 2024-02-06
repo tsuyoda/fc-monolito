@@ -1,34 +1,38 @@
 import Id from '../../@shared/domain/value_object/id.valueObject';
-import Product from '../domain/product.entity';
-import IProductGateway from '../gateway/product.gateway';
-import ProductModel from './product.model';
+import CatalogProduct from '../domain/catalogProduct.entity';
+import ICatalogProductGateway from '../gateway/catalogProduct.gateway';
+import StoreCatalogModel from '../../../infrastructure/database/models/storeCatalog.model';
 
-export default class ProductRepository implements IProductGateway {
-  async findAll(): Promise<Product[]> {
-    const products = await ProductModel.findAll();
+export default class CatalogProductRepository
+  implements ICatalogProductGateway
+{
+  async findAll(): Promise<CatalogProduct[]> {
+    const products = await StoreCatalogModel.findAll();
 
     return products.map(
-      product =>
-        new Product({
-          id: new Id(product.id),
-          name: product.name,
-          description: product.description,
-          salesPrice: product.salesPrice,
+      catalogProduct =>
+        new CatalogProduct({
+          id: new Id(catalogProduct.id),
+          productId: new Id(catalogProduct.productId),
+          name: catalogProduct.name,
+          description: catalogProduct.description,
+          salesPrice: catalogProduct.salesPrice,
         }),
     );
   }
-  async find(id: string): Promise<Product> {
-    const product = await ProductModel.findOne({
+  async findByProductId(productId: string): Promise<CatalogProduct> {
+    const catalogProduct = await StoreCatalogModel.findOne({
       where: {
-        id: id,
+        productId,
       },
     });
 
-    return new Product({
-      id: new Id(product.id),
-      name: product.name,
-      description: product.description,
-      salesPrice: product.salesPrice,
+    return new CatalogProduct({
+      id: new Id(catalogProduct.id),
+      productId: new Id(catalogProduct.productId),
+      name: catalogProduct.name,
+      description: catalogProduct.description,
+      salesPrice: catalogProduct.salesPrice,
     });
   }
 }

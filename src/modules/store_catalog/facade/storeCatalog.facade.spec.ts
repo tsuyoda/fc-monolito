@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
 import StoreCatalogFacadeFactory from '../factory/facade.factory';
-import ProductModel from '../repository/product.model';
+import StoreCatalogModel from '../../../infrastructure/database/models/storeCatalog.model';
+import { ProductModel } from '../../../infrastructure/database/models/product.model';
 
 describe('StoreCatalogFacade test', () => {
   let sequelize: Sequelize;
@@ -13,7 +14,7 @@ describe('StoreCatalogFacade test', () => {
       sync: { force: true },
     });
 
-    await sequelize.addModels([ProductModel]);
+    await sequelize.addModels([StoreCatalogModel, ProductModel]);
     await sequelize.sync();
   });
 
@@ -26,11 +27,22 @@ describe('StoreCatalogFacade test', () => {
     await ProductModel.create({
       id: '1',
       name: 'Product 1',
+      description: 'Product 1 description',
+      purchasePrice: 100,
+      stock: 10,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    await StoreCatalogModel.create({
+      id: '1',
+      productId: '1',
+      name: 'Product 1',
       description: 'Description 1',
       salesPrice: 100,
     });
 
-    const result = await facade.find({ id: '1' });
+    const result = await facade.findByProductId({ productId: '1' });
 
     expect(result.id).toBe('1');
     expect(result.name).toBe('Product 1');
@@ -40,13 +52,34 @@ describe('StoreCatalogFacade test', () => {
 
   it('should find all products', async () => {
     const facade = StoreCatalogFacadeFactory.create();
+
     await ProductModel.create({
+      id: '1',
+      name: 'Product 1',
+      description: 'Product 1 description',
+      purchasePrice: 100,
+      stock: 10,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    await ProductModel.create({
+      id: '2',
+      name: 'Product 2',
+      description: 'Product 2 description',
+      purchasePrice: 200,
+      stock: 10,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    await StoreCatalogModel.create({
       id: '1',
       name: 'Product 1',
       description: 'Description 1',
       salesPrice: 100,
     });
-    await ProductModel.create({
+    await StoreCatalogModel.create({
       id: '2',
       name: 'Product 2',
       description: 'Description 2',

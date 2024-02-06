@@ -1,16 +1,18 @@
 import Id from '../../../@shared/domain/value_object/id.valueObject';
-import Product from '../../domain/product.entity';
+import CatalogProduct from '../../domain/catalogProduct.entity';
 import FindAllProductsUsecase from './findAllProducts.usecase';
 
-const product = new Product({
+const product = new CatalogProduct({
   id: new Id('1'),
+  productId: new Id('1'),
   name: 'Product 1',
   description: 'Description 1',
   salesPrice: 100,
 });
 
-const product2 = new Product({
+const product2 = new CatalogProduct({
   id: new Id('2'),
+  productId: new Id('2'),
   name: 'Product 2',
   description: 'Description 2',
   salesPrice: 200,
@@ -18,7 +20,7 @@ const product2 = new Product({
 
 const MockRepository = () => {
   return {
-    find: jest.fn(),
+    findByProductId: jest.fn(),
     findAll: jest.fn().mockReturnValue(Promise.resolve([product, product2])),
   };
 };

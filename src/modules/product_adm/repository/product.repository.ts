@@ -1,7 +1,7 @@
 import Id from '../../@shared/domain/value_object/id.valueObject';
 import Product from '../domain/product.entity';
 import IProductGateway from '../gateway/product.gateway';
-import { ProductModel } from './product.model';
+import { ProductModel } from '../../../infrastructure/database/models/product.model';
 
 export default class ProductRepository implements IProductGateway {
   async add(product: Product): Promise<void> {
@@ -15,7 +15,7 @@ export default class ProductRepository implements IProductGateway {
       updatedAt: new Date(),
     });
   }
-  async find(id: string): Promise<Product> {
+  async findById(id: string): Promise<Product> {
     const product = await ProductModel.findOne({
       where: { id },
     });

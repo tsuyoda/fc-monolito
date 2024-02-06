@@ -2,7 +2,7 @@ import Address from '../../@shared/domain/value_object/address.valueObject';
 import Id from '../../@shared/domain/value_object/id.valueObject';
 import Client from '../domain/client.entity';
 import IClientGateway from '../gateway/client.gateway';
-import { ClientModel } from './client.model';
+import { ClientModel } from '../../../infrastructure/database/models/client.model';
 
 export default class ClientRepository implements IClientGateway {
   async add(entity: Client): Promise<void> {

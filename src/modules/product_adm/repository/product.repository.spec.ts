@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
 import Id from '../../@shared/domain/value_object/id.valueObject';
 import Product from '../domain/product.entity';
-import { ProductModel } from './product.model';
+import { ProductModel } from '../../../infrastructure/database/models/product.model';
 import ProductRepository from './product.repository';
 
 describe('ProductRepository test', () => {
@@ -59,7 +59,7 @@ describe('ProductRepository test', () => {
       updatedAt: new Date(),
     });
 
-    const product = await productRepository.find('1');
+    const product = await productRepository.findById('1');
 
     expect(product.id.value).toEqual('1');
     expect(product.name).toEqual('Product 1');

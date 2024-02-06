@@ -9,7 +9,7 @@ export default class CheckStockUseCase {
   }
 
   async execute(input: ICheckStockInputDto): Promise<ICheckStockOutputDto> {
-    const product = await this._productRepository.find(input.productId);
+    const product = await this._productRepository.findById(input.productId);
     return {
       productId: product.id.value,
       stock: product.stock,

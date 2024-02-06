@@ -13,7 +13,7 @@ const product = new Product({
 const MockRepository = () => {
   return {
     add: jest.fn(),
-    find: jest.fn().mockReturnValue(Promise.resolve(product)),
+    findById: jest.fn().mockReturnValue(Promise.resolve(product)),
   };
 };
 
@@ -27,7 +27,7 @@ describe('CheckStock usecase unit test', () => {
 
     const result = await checkStockUseCase.execute(input);
 
-    expect(ProductRepository.find).toHaveBeenCalled();
+    expect(ProductRepository.findById).toHaveBeenCalled();
     expect(result.productId).toBe('1');
     expect(result.stock).toBe(10);
   });

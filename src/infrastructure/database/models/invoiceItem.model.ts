@@ -16,6 +16,6 @@ export class InvoiceItemModel extends Model {
   declare price: number;
 
   @ForeignKey(() => InvoiceModel)
-  @Column({ allowNull: false })
-  declare invoice_id: string;
+  @Column({ allowNull: false, field: 'invoice_id' })
+  declare invoiceId: string;
 }

@@ -1,7 +1,7 @@
 import Transaction from '../domain/transaction.entity';
 import transaction from '../domain/transaction.entity';
 import IPaymentGateway from '../gateway/payment.gateway';
-import TransactionModel from './transaction.model';
+import TransactionModel from '../../../infrastructure/database/models/transaction.model';
 
 export default class TransactionRepostiory implements IPaymentGateway {
   async save(input: transaction): Promise<transaction> {

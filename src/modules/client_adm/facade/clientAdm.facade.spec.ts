@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
-import { ClientModel } from '../repository/client.model';
+import { ClientModel } from '../../../infrastructure/database/models/client.model';
 import ClientRepository from '../repository/client.repository';
 import AddClientUseCase from '../use_case/add_client/addClient.usecase';
 import ClientAdmFacade from './clientAdm.facade';
