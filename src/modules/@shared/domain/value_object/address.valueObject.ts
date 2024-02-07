@@ -1,12 +1,12 @@
 import IValueObject from './valueObject.interface';
 
 export default class Address implements IValueObject {
-  _street: string = '';
-  _number: string = '';
-  _complement: string = '';
-  _city: string = '';
-  _state: string = '';
-  _zipCode: string = '';
+  private _street: string = '';
+  private _number: string = '';
+  private _complement: string = '';
+  private _city: string = '';
+  private _state: string = '';
+  private _zipCode: string = '';
 
   constructor(
     street: string,
@@ -22,6 +22,8 @@ export default class Address implements IValueObject {
     this._city = city;
     this._state = state;
     this._zipCode = zipCode;
+
+    this.validate();
   }
 
   get street(): string {
@@ -48,7 +50,11 @@ export default class Address implements IValueObject {
     return this._zipCode;
   }
 
-  validate() {
+  public toString(): string {
+    return `${this.street}, ${this.number}, ${this.complement} - ${this.zipCode} - ${this.city} / ${this.state}`;
+  }
+
+  private validate() {
     if (this._street.length === 0) {
       throw new Error('Street is required');
     }
