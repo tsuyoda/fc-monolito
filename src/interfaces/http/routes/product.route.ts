@@ -27,7 +27,6 @@ productRouter.post('/', async (req: Request, res: Response) => {
 
     res.status(201).json(response);
   } catch (err) {
-    console.log(err);
     res.status(500).send(err);
   }
 });
@@ -47,7 +46,6 @@ productRouter.post(
 
       res.status(201).json(response);
     } catch (err) {
-      console.log(err);
       res.status(500).send(err);
     }
   },

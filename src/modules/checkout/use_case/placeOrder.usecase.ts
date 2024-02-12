@@ -79,14 +79,14 @@ export default class PlaceOrderUseCase implements IUseCase {
   }
 
   private async getProduct(productId: string): Promise<Product> {
-    const product = await this._catalogFacade.findByProductId({ productId });
+    const catalog = await this._catalogFacade.findByProductId({ productId });
 
     return new Product({
-      id: new Id(product.productId),
-      productId: new Id(product.id),
-      name: product.name,
-      description: product.description,
-      salesPrice: product.salesPrice,
+      id: new Id(catalog.productId),
+      catalogProductId: new Id(catalog.id),
+      name: catalog.name,
+      description: catalog.description,
+      salesPrice: catalog.salesPrice,
     });
   }
 }

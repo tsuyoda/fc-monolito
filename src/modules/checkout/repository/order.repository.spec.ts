@@ -79,7 +79,7 @@ describe('Order Repository test', () => {
     const products = [
       new Product({
         id: new Id('1'),
-        productId: new Id('1'),
+        catalogProductId: new Id('1'),
         name: 'Product 1',
         description: 'Description',
         salesPrice: 100,
@@ -121,7 +121,7 @@ describe('Order Repository test', () => {
     const products = [
       new Product({
         id: new Id('1'),
-        productId: new Id('1'),
+        catalogProductId: new Id('1'),
         name: 'Product 1',
         description: 'Description',
         salesPrice: 100,

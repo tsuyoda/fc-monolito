@@ -16,8 +16,8 @@ export default class OrderRepository implements ICheckoutGateway {
         clientId: order.client.id.value,
         items: order.products.map(product => ({
           id: new Id().value,
-          catalogProductId: product.id.value,
-          productId: product.productId.value,
+          catalogProductId: product.catalogProductId.value,
+          productId: product.id.value,
           orderId: order.id.value,
         })),
         createdAt: new Date(),
@@ -56,8 +56,8 @@ export default class OrderRepository implements ICheckoutGateway {
     const products = order.items.map(
       item =>
         new Product({
-          id: new Id(item.catalogProductId),
-          productId: new Id(item.productId),
+          id: new Id(item.productId),
+          catalogProductId: new Id(item.catalogProductId),
           name: item.catalogProduct.name,
           description: item.catalogProduct.description,
           salesPrice: item.catalogProduct.salesPrice,

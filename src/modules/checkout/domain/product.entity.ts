@@ -3,21 +3,21 @@ import Id from '../../@shared/domain/value_object/id.valueObject';
 
 interface IProductProps {
   id: Id;
-  productId: Id;
+  catalogProductId: Id;
   name: string;
   description: string;
   salesPrice: number;
 }
 
 export default class Product extends BaseEntity {
-  private _productId: Id;
+  private _catalogProductId: Id;
   private _name: string;
   private _description: string;
   private _salesPrice: number;
 
   constructor(props: IProductProps) {
     super(props.id);
-    this._productId = props.productId;
+    this._catalogProductId = props.catalogProductId;
     this._name = props.name;
     this._description = props.description;
     this._salesPrice = props.salesPrice;
@@ -27,7 +27,7 @@ export default class Product extends BaseEntity {
     return this._salesPrice;
   }
 
-  get productId() {
-    return this._productId;
+  get catalogProductId() {
+    return this._catalogProductId;
   }
 }
