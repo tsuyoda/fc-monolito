@@ -3,7 +3,7 @@ import BaseEntity from '../../@shared/domain/entity/base.entity';
 import Id from '../../@shared/domain/value_object/id.valueObject';
 
 type CatalogProductProps = {
-  id: Id;
+  id?: Id;
   productId: Id;
   name: string;
   description: string;

@@ -12,6 +12,7 @@ const product = new CatalogProduct({
 
 const MockRepository = () => {
   return {
+    add: jest.fn(),
     findAll: jest.fn(),
     findByProductId: jest.fn().mockReturnValue(Promise.resolve(product)),
   };

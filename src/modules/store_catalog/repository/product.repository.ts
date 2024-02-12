@@ -6,6 +6,17 @@ import StoreCatalogModel from '../../../infrastructure/database/models/storeCata
 export default class CatalogProductRepository
   implements ICatalogProductGateway
 {
+  async add(catalogProduct: CatalogProduct): Promise<void> {
+    await StoreCatalogModel.create({
+      id: catalogProduct.id.value,
+      productId: catalogProduct.productId.value,
+      name: catalogProduct.name,
+      description: catalogProduct.description,
+      salesPrice: catalogProduct.salesPrice,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+  }
   async findAll(): Promise<CatalogProduct[]> {
     const products = await StoreCatalogModel.findAll();
 
