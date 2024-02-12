@@ -41,6 +41,8 @@ describe('Generate invoice use case unit tests', () => {
       zipCode: input.zipCode,
       items: input.items,
       total: 100,
+      updatedAt: expect.any(Date),
+      createdAt: expect.any(Date),
     };
 
     expect(results).toStrictEqual(output);

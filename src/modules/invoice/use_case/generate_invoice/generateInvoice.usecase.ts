@@ -56,6 +56,8 @@ export default class GenerateInvoiceUseCase {
         price: item.price,
       })),
       total: invoice.total,
+      createdAt: invoice.createdAt,
+      updatedAt: invoice.updatedAt,
     };
   }
 }

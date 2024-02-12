@@ -75,5 +75,11 @@ describe('Checkout routes e2e tests', () => {
     const orderResponse = await request(app).post(`/checkout`).send(orderInput);
 
     expect(orderResponse.status).toBe(201);
+
+    expect(orderResponse.body).toStrictEqual({
+      id: expect.any(String),
+      total: 100,
+      products: orderInput.products,
+    });
   });
 });

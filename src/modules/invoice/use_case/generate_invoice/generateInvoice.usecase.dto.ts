@@ -30,4 +30,6 @@ export interface IGenerateInvoiceUseCaseOutputDto {
     price: number;
   }[];
   total: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
