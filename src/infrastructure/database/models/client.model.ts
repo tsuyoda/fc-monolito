@@ -21,7 +21,7 @@ export class ClientModel extends Model {
   declare street: string;
 
   @Column({ allowNull: false })
-  declare number: string;
+  declare number: number;
 
   @Column({ allowNull: true })
   declare complement: string;

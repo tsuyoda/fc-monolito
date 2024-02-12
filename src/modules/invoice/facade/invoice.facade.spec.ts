@@ -32,7 +32,7 @@ describe('Invoice Facade test', () => {
       document: 'Document',
       address: {
         street: 'Street',
-        number: 'Number',
+        number: 100,
         complement: 'Complement',
         city: 'City',
         state: 'State',
@@ -86,7 +86,7 @@ describe('Invoice Facade test', () => {
       document: 'Document',
       address: {
         street: 'Street',
-        number: 'Number',
+        number: 100,
         complement: 'Complement',
         city: 'City',
         state: 'State',

@@ -10,7 +10,7 @@ const client = new Client({
   document: '1234-5678',
   address: new Address(
     'Rua 123',
-    '99',
+    99,
     'Casa Verde',
     'Criciúma',
     'SC',
@@ -40,7 +40,7 @@ describe('Find Client use case unit test', () => {
     expect(result.id).toEqual(input.id);
     expect(result.name).toEqual(client.name);
     expect(result.email).toEqual(client.email);
-    expect(result.address).toEqual(client.address);
+    expect(result.address).toEqual(client.address.toObject());
     expect(result.createdAt).toEqual(client.createdAt);
     expect(result.updatedAt).toEqual(client.updatedAt);
   });

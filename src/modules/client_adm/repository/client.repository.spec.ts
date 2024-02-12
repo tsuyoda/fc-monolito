@@ -32,7 +32,7 @@ describe('Client Repository test', () => {
       document: '1234-5678',
       address: new Address(
         'Rua 123',
-        '99',
+        99,
         'Casa Verde',
         'Criciúma',
         'SC',
@@ -69,7 +69,7 @@ describe('Client Repository test', () => {
       email: 'lucian@123.com',
       document: '1234-5678',
       street: 'Rua 123',
-      number: '99',
+      number: 99,
       complement: 'Casa Verde',
       city: 'Criciúma',
       state: 'SC',

@@ -20,11 +20,11 @@
   },
   "scripts": {
     "test": "yarn tsc --noEmit && jest",
-    "dev": "yarn nodemon src/infrastructure/api/server.ts -r dotenv/config"
+    "dev": "yarn nodemon src/application/index.ts -r dotenv/config"
   },
   "dependencies": {
-    "jstoxml": "^3.2.3",
     "express": "^4.18.2",
+    "jstoxml": "^3.2.3",
     "reflect-metadata": "^0.2.1",
     "sequelize": "^6.35.2",
     "sequelize-typescript": "^2.1.6",

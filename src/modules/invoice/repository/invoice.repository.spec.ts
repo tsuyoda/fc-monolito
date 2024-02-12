@@ -36,7 +36,7 @@ describe('Invoice repository tests', () => {
     });
     const address = new Address(
       'Street',
-      '1',
+      1,
       'Complement',
       'City',
       'State',
@@ -85,7 +85,7 @@ describe('Invoice repository tests', () => {
     });
     const address = new Address(
       'Street',
-      '1',
+      1,
       'Complement',
       'City',
       'State',

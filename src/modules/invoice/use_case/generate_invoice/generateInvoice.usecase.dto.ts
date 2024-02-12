@@ -2,7 +2,7 @@ export interface IGenerateInvoiceUseCaseInputDto {
   name: string;
   document: string;
   street: string;
-  number: string;
+  number: number;
   complement: string;
   city: string;
   state: string;
@@ -19,7 +19,7 @@ export interface IGenerateInvoiceUseCaseOutputDto {
   name: string;
   document: string;
   street: string;
-  number: string;
+  number: number;
   complement: string;
   city: string;
   state: string;

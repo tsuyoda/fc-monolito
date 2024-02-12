@@ -13,7 +13,7 @@ describe('Generate invoice use case unit tests', () => {
       name: 'Invoice',
       document: 'Document',
       street: 'Street',
-      number: 'Number',
+      number: 100,
       complement: 'Complement',
       city: 'City',
       state: 'State',

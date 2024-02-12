@@ -1,7 +1,14 @@
-import Address from '../../../@shared/domain/value_object/address.valueObject';
-
 export interface IFindClientUseCaseInputDto {
   id: string;
+}
+
+interface IAddress {
+  street: string;
+  number: number;
+  complement: string;
+  city: string;
+  state: string;
+  zipCode: string;
 }
 
 export interface IFindClientUseCaseOutputDto {
@@ -9,7 +16,7 @@ export interface IFindClientUseCaseOutputDto {
   name: string;
   email: string;
   document: string;
-  address: Address;
+  address: IAddress;
   createdAt: Date;
   updatedAt: Date;
 }

@@ -1,11 +1,17 @@
-import Address from '../../../@shared/domain/value_object/address.valueObject';
-
+interface IAddress {
+  street: string;
+  number: number;
+  complement: string;
+  city: string;
+  state: string;
+  zipCode: string;
+}
 export interface IAddClientInputDto {
   id?: string;
   name: string;
   email: string;
   document: string;
-  address: Address;
+  address: IAddress;
 }
 
 export interface IAddClientOutputDto {
@@ -13,7 +19,7 @@ export interface IAddClientOutputDto {
   name: string;
   email: string;
   document: string;
-  address: Address;
+  address: IAddress;
   createdAt: Date;
   updatedAt: Date;
 }

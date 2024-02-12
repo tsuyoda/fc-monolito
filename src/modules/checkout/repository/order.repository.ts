@@ -1,7 +1,5 @@
-import { ClientModel } from '../../../infrastructure/database/models/client.model';
 import { OrderModel } from '../../../infrastructure/database/models/order.model';
 import { OrderItemModel } from '../../../infrastructure/database/models/orderItem.model';
-import { ProductModel } from '../../../infrastructure/database/models/product.model';
 import Address from '../../@shared/domain/value_object/address.valueObject';
 import Id from '../../@shared/domain/value_object/id.valueObject';
 import Client from '../domain/client.entity';

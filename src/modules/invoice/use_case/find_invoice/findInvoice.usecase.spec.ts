@@ -16,14 +16,7 @@ describe('Find invoice use case unit tests', () => {
       updatedAt: new Date(),
       name: 'Invoice',
       document: 'Document',
-      address: new Address(
-        'Street',
-        'Number',
-        'Complement',
-        'City',
-        'State',
-        'Zip',
-      ),
+      address: new Address('Street', 100, 'Complement', 'City', 'State', 'Zip'),
       items: [new InvoiceItem({ id: new Id('1'), name: 'Item', price: 100 })],
     });
 

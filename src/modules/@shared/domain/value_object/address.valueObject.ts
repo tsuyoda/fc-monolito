@@ -2,7 +2,7 @@ import IValueObject from './valueObject.interface';
 
 export default class Address implements IValueObject {
   private _street: string = '';
-  private _number: string = '';
+  private _number: number;
   private _complement: string = '';
   private _city: string = '';
   private _state: string = '';
@@ -10,7 +10,7 @@ export default class Address implements IValueObject {
 
   constructor(
     street: string,
-    number: string,
+    number: number,
     complement: string,
     city: string,
     state: string,
@@ -30,7 +30,7 @@ export default class Address implements IValueObject {
     return this._street;
   }
 
-  get number(): string {
+  get number(): number {
     return this._number;
   }
 
@@ -54,11 +54,22 @@ export default class Address implements IValueObject {
     return `${this.street}, ${this.number}, ${this.complement} - ${this.zipCode} - ${this.city} / ${this.state}`;
   }
 
+  public toObject() {
+    return {
+      street: this.street,
+      number: this.number,
+      complement: this.complement,
+      zipCode: this.zipCode,
+      city: this.city,
+      state: this.state,
+    };
+  }
+
   private validate() {
     if (this._street.length === 0) {
       throw new Error('Street is required');
     }
-    if (this._number.length === 0) {
+    if (!this._number || this._number === 0) {
       throw new Error('Number is required');
     }
     if (this._complement.length === 0) {
