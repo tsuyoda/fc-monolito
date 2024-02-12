@@ -54,20 +54,23 @@ describe('Invoice Facade test', () => {
       include: [InvoiceItemModel],
     });
 
-    expect(invoice.id).toBeDefined();
-    expect(invoice.name).toBe(input.name);
-    expect(invoice.document).toBe(input.document);
+    expect(invoice).toBeDefined();
+
+    expect(invoice!.id).toBeDefined();
+
+    expect(invoice!.name).toBe(input.name);
+    expect(invoice!.document).toBe(input.document);
     expect({
-      street: invoice.street,
-      number: invoice.number,
-      complement: invoice.complement,
-      city: invoice.city,
-      state: invoice.state,
-      zipCode: invoice.zipCode,
+      street: invoice!.street,
+      number: invoice!.number,
+      complement: invoice!.complement,
+      city: invoice!.city,
+      state: invoice!.state,
+      zipCode: invoice!.zipCode,
     }).toStrictEqual(input.address);
 
     expect(
-      invoice.items.map(item => ({
+      invoice!.items.map(item => ({
         id: item.id,
         name: item.name,
         price: item.price,
@@ -100,13 +103,15 @@ describe('Invoice Facade test', () => {
 
     await facade.generate(input);
 
-    const { id, createdAt, updatedAt } = await InvoiceModel.findOne({
+    const invoice = await InvoiceModel.findOne({
       where: { name: input.name },
     });
 
-    const searchedInvoice = await facade.find({ id });
+    expect(invoice).toBeDefined();
 
-    expect(searchedInvoice.id).toBe(id);
+    const searchedInvoice = await facade.find({ id: invoice!.id });
+
+    expect(searchedInvoice.id).toBe(invoice!.id);
     expect(searchedInvoice.name).toBe(input.name);
     expect(searchedInvoice.document).toBe(input.document);
 
@@ -116,7 +121,7 @@ describe('Invoice Facade test', () => {
 
     expect(searchedInvoice.total).toBe(100);
 
-    expect(searchedInvoice.createdAt).toStrictEqual(createdAt);
-    expect(searchedInvoice.updatedAt).toStrictEqual(updatedAt);
+    expect(searchedInvoice.createdAt).toStrictEqual(invoice!.createdAt);
+    expect(searchedInvoice.updatedAt).toStrictEqual(invoice!.updatedAt);
   });
 });

@@ -26,12 +26,7 @@ describe('Client Adm Facade test', () => {
   });
 
   it('should create a client', async () => {
-    const repository = new ClientRepository();
-    const addUsecase = new AddClientUseCase(repository);
-    const facade = new ClientAdmFacade({
-      addUsecase: addUsecase,
-      findUsecase: undefined,
-    });
+    const facade = ClientAdmFacadeFactory.create();
 
     const input = {
       id: '1',
@@ -53,11 +48,12 @@ describe('Client Adm Facade test', () => {
     const client = await ClientModel.findOne({ where: { id: '1' } });
 
     expect(client).toBeDefined();
-    expect(client.id).toBe(input.id);
-    expect(client.name).toBe(input.name);
-    expect(client.email).toBe(input.email);
-    expect(client.document).toBe(input.document);
-    expect(client.street).toBe(input.address.street);
+
+    expect(client!.id).toBe(input.id);
+    expect(client!.name).toBe(input.name);
+    expect(client!.email).toBe(input.email);
+    expect(client!.document).toBe(input.document);
+    expect(client!.street).toBe(input.address.street);
   });
 
   it('should find a client', async () => {

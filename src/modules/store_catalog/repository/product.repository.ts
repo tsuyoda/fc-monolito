@@ -27,6 +27,10 @@ export default class CatalogProductRepository
       },
     });
 
+    if (!catalogProduct) {
+      throw new Error(`Product with id ${productId} not found`);
+    }
+
     return new CatalogProduct({
       id: new Id(catalogProduct.id),
       productId: new Id(catalogProduct.productId),

@@ -102,9 +102,10 @@ describe('Order Repository test', () => {
     });
 
     expect(orderDb).toBeDefined();
-    expect(orderDb.clientId).toBe(client.id.value);
-    expect(orderDb.status).toBe(order.status);
-    expect(orderDb.items.map(item => item.catalogProductId)).toStrictEqual(
+
+    expect(orderDb!.clientId).toBe(client.id.value);
+    expect(orderDb!.status).toBe(order.status);
+    expect(orderDb!.items.map(item => item.catalogProductId)).toStrictEqual(
       products.map(product => product.id.value),
     );
   });

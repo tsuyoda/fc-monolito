@@ -58,17 +58,19 @@ describe('Invoice repository tests', () => {
       include: [{ model: InvoiceItemModel, as: 'items' }],
     });
 
-    expect(modelResults.id).toBe(invoice.id.value);
-    expect(modelResults.name).toBe(invoice.name);
-    expect(modelResults.document).toBe(invoice.document);
-    expect(modelResults.street).toBe(address.street);
-    expect(modelResults.number).toBe(address.number);
-    expect(modelResults.complement).toBe(address.complement);
-    expect(modelResults.city).toBe(address.city);
-    expect(modelResults.state).toBe(address.state);
-    expect(modelResults.zipCode).toBe(address.zipCode);
+    expect(modelResults).toBeDefined();
 
-    const [modelItem] = modelResults.items;
+    expect(modelResults!.id).toBe(invoice.id.value);
+    expect(modelResults!.name).toBe(invoice.name);
+    expect(modelResults!.document).toBe(invoice.document);
+    expect(modelResults!.street).toBe(address.street);
+    expect(modelResults!.number).toBe(address.number);
+    expect(modelResults!.complement).toBe(address.complement);
+    expect(modelResults!.city).toBe(address.city);
+    expect(modelResults!.state).toBe(address.state);
+    expect(modelResults!.zipCode).toBe(address.zipCode);
+
+    const [modelItem] = modelResults!.items;
 
     expect(modelItem.id).toBe(item.id.value);
     expect(modelItem.name).toBe(item.name);

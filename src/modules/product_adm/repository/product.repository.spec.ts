@@ -39,11 +39,13 @@ describe('ProductRepository test', () => {
       where: { id: productProps.id.value },
     });
 
-    expect(productProps.id.value).toEqual(productDb.id);
-    expect(productProps.name).toEqual(productDb.name);
-    expect(productProps.description).toEqual(productDb.description);
-    expect(productProps.purchasePrice).toEqual(productDb.purchasePrice);
-    expect(productProps.stock).toEqual(productDb.stock);
+    expect(productDb).toBeDefined();
+
+    expect(productProps.id.value).toEqual(productDb!.id);
+    expect(productProps.name).toEqual(productDb!.name);
+    expect(productProps.description).toEqual(productDb!.description);
+    expect(productProps.purchasePrice).toEqual(productDb!.purchasePrice);
+    expect(productProps.stock).toEqual(productDb!.stock);
   });
 
   it('should find a product', async () => {
